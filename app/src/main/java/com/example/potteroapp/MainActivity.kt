@@ -31,13 +31,14 @@ class MainActivity : AppCompatActivity() {
     binding.characterRecyclerview.adapter = characterAdapter
 
     val potterApi = Retrofit.Builder()
-        .baseUrl("http://hp-api.herokuapp.com")
+        .baseUrl("http://127.0.0.1:8080")
         .addConverterFactory(GsonConverterFactory.create(Gson()))
         .client(OkHttpProvider.getOkHttpClient())
         .build()
         .create(PotterApi::class.java)
 
     potterApi.getCharacters().enqueue(object : Callback<List<CharacterModel>> {
+
       override fun onFailure(call: Call<List<CharacterModel>>, t: Throwable) {
         showErrorState()
       }
