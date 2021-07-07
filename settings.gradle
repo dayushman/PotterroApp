@@ -1,0 +1,2 @@
+rootProject.name = "PotteroApp"
+include ':app'
