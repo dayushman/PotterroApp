@@ -34,26 +34,27 @@ class MainActivityTest {
     fun tearDown() {
         mockWebServer.shutdown()
     }
-/*
     @Test
     fun `file is read`(){
-        Truth.assertThat(FileReader.content).isNotNull()
-    }*/
+        val fileContent = this::class.java.classLoader.getResource("response.json").readText()
+        Truth.assertThat(fileContent).isNotNull()
+    }
 
     @Test
     fun `demo test case`(){
         val message = 200
         Truth.assertThat(message).isEqualTo(200)
     }
-    @Test
+    /*@Test
     fun `api call success`(){
-        val body = FileReader.content
-        val mockResponse = MockResponse().setResponseCode(200).setBody(body)
+        val fileContent = this::class.java.classLoader.getResource("response.json").readText()
+
+        val mockResponse = MockResponse().setResponseCode(200)
         mockWebServer.enqueue(mockResponse)
         val response = api.getCharacters().execute()
 
         Truth.assertThat(response.isSuccessful).isTrue()
         Truth.assertThat(response.code()).isEqualTo(200)
-    }
+    }*/
 
 }
