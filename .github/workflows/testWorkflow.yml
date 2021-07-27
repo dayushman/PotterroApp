@@ -2,7 +2,7 @@ name: Run Unit Tests CI
 on: pull_request
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
 
@@ -16,7 +16,7 @@ jobs:
         
       # Execute unit tests
       - name: Tests
-        run: gradlew test --stacktrace
+        run: ./gradlew test --stacktrace
 
       - name: Android Test Report
         uses: asadmansr/android-test-report-action@v1.2.0
