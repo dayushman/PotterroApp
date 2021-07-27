@@ -1,6 +1,5 @@
 name: Run Unit Tests CI
 on: pull_request
-branches: [master]
 jobs:
   test:
     runs-on: windows-latest
