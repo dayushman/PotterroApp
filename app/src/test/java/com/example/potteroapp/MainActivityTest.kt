@@ -45,9 +45,10 @@ class MainActivityTest {
         val message = 200
         Truth.assertThat(message).isEqualTo(200)
     }
-    /*@Test
+
+    @Test
     fun `api call success`(){
-        val fileContent = this::class.java.classLoader.getResource("response.json").readText()
+//        val fileContent = this::class.java.classLoader.getResource("response.json").readText()
 
         val mockResponse = MockResponse().setResponseCode(200)
         mockWebServer.enqueue(mockResponse)
@@ -55,6 +56,6 @@ class MainActivityTest {
 
         Truth.assertThat(response.isSuccessful).isTrue()
         Truth.assertThat(response.code()).isEqualTo(200)
-    }*/
+    }
 
 }
