@@ -3,6 +3,7 @@ package com.example.potteroapp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
@@ -24,6 +25,7 @@ class MainActivityTest {
         .client(OkHttpProvider.getOkHttpClient())
         .build()
         .create(PotterApi::class.java)
+    private val gson = Gson()
 
     @Before
     fun setUp() {
@@ -45,16 +47,30 @@ class MainActivityTest {
         val message = 200
         Truth.assertThat(message).isEqualTo(200)
     }
-    /*@Test
+
+    @Test
     fun `api call success`(){
         val fileContent = this::class.java.classLoader.getResource("response.json").readText()
 
-        val mockResponse = MockResponse().setResponseCode(200)
+        val list: TypeToken<List<CharacterModel>> = object : TypeToken<List<CharacterModel>>() {}
+
+        val responseBody = gson.fromJson<List<CharacterModel>>(fileContent,list.type)
+
+        val mockResponse = MockResponse().setResponseCode(200).setBody(fileContent)
         mockWebServer.enqueue(mockResponse)
         val response = api.getCharacters().execute()
 
+        val body = response.body()
+        val firstObject = body?.first()
+        val firstMock = responseBody?.first()
+
         Truth.assertThat(response.isSuccessful).isTrue()
         Truth.assertThat(response.code()).isEqualTo(200)
-    }*/
+        Truth.assertThat(body?.size).isEqualTo(responseBody.size)
+        Truth.assertThat(firstObject?.name).isEqualTo(firstMock?.name)
+        Truth.assertThat(firstObject?.ancestry).isEqualTo(firstMock?.ancestry)
+        Truth.assertThat(firstObject?.house).isEqualTo(firstMock?.house)
+
+    }
 
 }
