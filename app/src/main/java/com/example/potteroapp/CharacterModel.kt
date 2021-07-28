@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class CharacterModel(
     @SerializedName("name")
-    val name: Int,
+    val name: String,
     @SerializedName("house")
     val house: String? = "Unknown",
     @SerializedName("ancestry")
