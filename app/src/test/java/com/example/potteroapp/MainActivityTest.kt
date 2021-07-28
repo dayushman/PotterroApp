@@ -36,7 +36,7 @@ class MainActivityTest {
     }
     @Test
     fun `file is read`(){
-        val fileContent = this::class.java.classLoader.getResource("response.json").readText()
+        val fileContent = FileReader("response.json").content
         Truth.assertThat(fileContent).isNotNull()
     }
 
