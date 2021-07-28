@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity() {
 
       override fun onFailure(call: Call<List<CharacterModel>>, t: Throwable) {
         showErrorState()
+
+
+
       }
 
       override fun onResponse(call: Call<List<CharacterModel>>,
