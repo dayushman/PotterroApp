@@ -23,7 +23,6 @@ jobs:
         with:
           job_name: test
           status: ${{ job.status }}
-          text: 'Test Workflow'
           author_name: test
           fields: all
           mention: here
