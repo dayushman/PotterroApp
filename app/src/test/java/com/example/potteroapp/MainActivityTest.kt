@@ -45,7 +45,7 @@ class MainActivityTest {
     @Test
     fun `demo test case`(){
         val message = 200
-        Truth.assertThat(message).isEqualTo(500)
+        Truth.assertThat(message).isEqualTo(200)
     }
 
     @Test
