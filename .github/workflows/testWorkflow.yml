@@ -1,5 +1,5 @@
 name: Run Unit Tests CI
-on: [pull_request]
+on: [push]
 
 jobs:
   test:

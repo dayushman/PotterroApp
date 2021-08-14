@@ -1,0 +1,17 @@
+name: Slack Notification
+on: [push]
+
+jobs:
+  slack:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        author_name: test
+        fields: all
+        mention: here
+        if_mention: always
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      if: always()
