@@ -19,15 +19,11 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Test with Gradle
         run: ./gradlew test --scan
-
-  slack:
-    needs: [test]
-    name : Slack Notifiction
-    runs-on: ubuntu-latest
-    steps:
       - uses: 8398a7/action-slack@v3
         with:
+          job_name: test
           status: ${{ job.status }}
+          text: 'Test Workflow'
           author_name: test
           fields: all
           mention: here
