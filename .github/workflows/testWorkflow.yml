@@ -18,15 +18,11 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
       - name: Test with Gradle
-        run: ./gradlew test --scan
-      - uses: 8398a7/action-slack@v3
+        run: ./gradlew assembleDebug
+      - name: Upload to slack 
+        uses: adrey/slack-file-upload-action@master
         with:
-          job_name: test
-          status: ${{ job.status }}
-          author_name: test
-          fields: all
-          mention: here
-          if_mention: always
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: always()
+          token: ${{ secrets.SLACK_TOKEN }}
+          name: Pottero.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          channel: android-automation-testing
